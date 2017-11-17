@@ -10,7 +10,7 @@ ADD . /app
 RUN cp -rp /app/scripts /scripts && \
     cp -rp /app/bootstrap /bootstrap && \
 {%- if seafile_version <= '6.0.6' %}
-    cp /app/scripts/tmp/check_init_admin.py /opt/seafile/seafile-server-{{ seafile_version }}/check_init_admin.py && \
+    cp /app/scripts/tmp/check_init_admin.py /opt/seafile/seafile-pro-server-{{ seafile_version }}/check_init_admin.py && \
 {%- endif %}
 {%- if https %}
    cp /app/bootstrap/generated/letsencrypt.cron /etc/cron.d/letsencrypt.cron && \

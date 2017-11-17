@@ -3,7 +3,7 @@
 set -e
 
 # Before
-SEAFILE_DIR=/opt/seafile/seafile-server-latest
+SEAFILE_DIR=/opt/seafile/seafile-pro-server-latest
 
 $SEAFILE_DIR/seafile.sh stop
 

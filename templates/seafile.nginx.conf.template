@@ -70,7 +70,7 @@ server {
     }
 
     location /media {
-        root /opt/seafile/seafile-server-latest/seahub;
+        root /opt/seafile/seafile-pro-server-latest/seahub;
     }
 
     # For letsencrypt

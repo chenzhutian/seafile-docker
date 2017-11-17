@@ -8,10 +8,13 @@ RUN sed -i -e 's|\(^exec syslog-ng.*$\)|\1 >>/var/log/syslog-ng.log 2>\&1|g' /et
 
 RUN mkdir -p /etc/my_init.d
 
-ENV SEAFILE_VERSION=6.2.2
+ENV SEAFILE_VERSION=6.1.9
+RUN add-apt-repository ppa:webupd8team/java && apt-get update
+RUN apt-get install -y openjdk-8-jre
+RUN ln -sf /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java /usr/bin/
 
-RUN mkdir -p /opt/seafile/ && \
-    curl -sSL -o - https://download.seadrive.org/seafile-server_${SEAFILE_VERSION}_x86-64.tar.gz \
-    | tar xzf - -C /opt/seafile/
+RUN mkdir -p /opt/seafile/
+COPY seafile-pro-server_6.1.9_x86-64.tar.gz /opt/
+RUN tar xzf /opt/seafile-pro-server_6.1.9_x86-64.tar.gz -C /opt/seafile/
 
 ADD create_data_links.sh /etc/my_init.d/create_data_links.sh

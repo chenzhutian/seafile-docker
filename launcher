@@ -22,12 +22,12 @@ usage () {
 set -e
 set -o pipefail
 
-version=6.2.2
-image=seafileltd/seafile:$version
+version=6.1.9
+image=seafile-pro:$version
 local_image=local_seafile/server:latest
 dockerdir=$(cd "$(dirname $0)"; pwd -P)
 sharedir=$dockerdir/shared
-installdir=/opt/seafile/seafile-server-$version
+installdir=/opt/seafile/seafile-pro-server-$version
 bootstrap_conf=$dockerdir/bootstrap/bootstrap.conf
 version_stamp_file=$sharedir/seafile/seafile-data/current_version
 
@@ -140,8 +140,8 @@ bootstrap() {
     fi
 
     docker history $image >/dev/null 2>&1 || {
-        loginfo "Pulling Seafile server image $version, this may take a while."
-        docker pull $image
+        loginfo "Build Seafile server-pro image $version, this may take a while."
+        cd image/seafile && docker build --rm -t $image .
         loginfo "Seafile server image $version pulled. Now bootstrapping the server ..."
     }
 
