@@ -12,6 +12,11 @@ RUN apt-get update -qq && apt-get -qq -y install memcached mariadb-server nginx
 # Utility tools
 RUN apt-get install -qq -y vim htop net-tools psmisc git wget curl
 
+# java
+RUN add-apt-repository ppa:webupd8team/java && apt-get update
+RUN apt-get install -y openjdk-8-jre
+RUN ln -sf /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java /usr/bin/
+
 # Guidline for installing python libs: if a lib has C-compoment (e.g.
 # python-imaging depends on libjpeg/libpng), we install it use apt-get.
 # Otherwise we install it with pip.
