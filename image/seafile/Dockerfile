@@ -1,4 +1,4 @@
-FROM seafileltd/base:16.04
+FROM unhealthy/seafile-pro-base:16.04
 WORKDIR /opt/seafile
 
 # syslog-ng and syslog-forwarder would mess up the container stdout, not good
