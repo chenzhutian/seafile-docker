@@ -22,12 +22,12 @@ usage () {
 set -e
 set -o pipefail
 
-version=6.1.9
-image=seafile-pro:$version
+version=6.2.3
+image=seafile:$version
 local_image=local_seafile/server:latest
 dockerdir=$(cd "$(dirname $0)"; pwd -P)
 sharedir=$dockerdir/shared
-installdir=/opt/seafile/seafile-pro-server-$version
+installdir=/opt/seafile/seafile-server-$version
 bootstrap_conf=$dockerdir/bootstrap/bootstrap.conf
 version_stamp_file=$sharedir/seafile/seafile-data/current_version
 
@@ -118,7 +118,7 @@ set_volumes() {
     init_shared
 
     mounts=(
-        $sharedir:/shared
+        $sharedir:/sharedversion
         $sharedir/logs/var-log:/var/log
         $sharedir/db:/var/lib/mysql
         $sharedir/.bash_history:/root/.bash_history

@@ -8,10 +8,10 @@ RUN sed -i -e 's|\(^exec syslog-ng.*$\)|\1 >>/var/log/syslog-ng.log 2>\&1|g' /et
 
 RUN mkdir -p /etc/my_init.d
 
-ENV SEAFILE_VERSION=6.1.9
+ENV SEAFILE_VERSION=6.2.3
 
 RUN mkdir -p /opt/seafile/
-COPY seafile-pro-server_6.1.9_x86-64.tar.gz /opt/
-RUN tar xzf /opt/seafile-pro-server_6.1.9_x86-64.tar.gz -C /opt/seafile/
+COPY seafile-server_6.2.3_x86-64.tar.gz /opt/
+RUN tar xzf /opt/seafile-server_6.2.3_x86-64.tar.gz -C /opt/seafile/
 
 ADD create_data_links.sh /etc/my_init.d/create_data_links.sh

@@ -25,8 +25,8 @@ if [[ -e /shared/logs/seafile ]]; then
     ln -sf /shared/logs/seafile/ /opt/seafile/logs
 fi
 
-current_version_dir=/opt/seafile/seafile-pro-server-${SEAFILE_VERSION}
-latest_version_dir=/opt/seafile/seafile-pro-server-latest
+current_version_dir=/opt/seafile/seafile-server-${SEAFILE_VERSION}
+latest_version_dir=/opt/seafile/seafile-server-latest
 seahub_data_dir=/shared/seafile/seahub-data
 
 if [[ ! -e ${latest_version_dir} ]]; then
