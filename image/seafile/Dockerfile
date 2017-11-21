@@ -9,7 +9,11 @@ RUN sed -i -e 's|\(^exec syslog-ng.*$\)|\1 >>/var/log/syslog-ng.log 2>\&1|g' /et
 RUN mkdir -p /etc/my_init.d
 
 ENV SEAFILE_VERSION=6.2.3
-RUN addgroup -S es && adduser -S -g es es
+RUN useradd -ms /bin/bash es
+RUN apt-get update &&\
+    apt-get install acl &&\
+    setfacl -m u:es:rwx /opt/seafile/logs &&\
+    setfacl u:es:rwx /opt/seafile/seafile-data
 
 RUN mkdir -p /opt/seafile/
 COPY seafile-server_6.2.3_x86-64.tar.gz /opt/
